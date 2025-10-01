@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShopBlazor.Api.Data;
+using ShopBlazor.Api.Repository;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 // Conectando com o banco de dados PostgresSQL
 builder.Services.AddDbContext<AppDbContext>(op=> op.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
+
+// Injetando o repositório
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
