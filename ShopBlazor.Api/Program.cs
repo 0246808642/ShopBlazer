@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Conectando com o banco de dados PostgreSQL
+// Conectando com o banco de dados PostgresSQL
 builder.Services.AddDbContext<AppDbContext>(op=> op.UseNpgsql(builder.Configuration.GetConnectionString("Connection")));
 
 var app = builder.Build();
