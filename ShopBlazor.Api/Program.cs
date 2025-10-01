@@ -6,7 +6,6 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,6 +17,9 @@ builder.Services.AddDbContext<AppDbContext>(op=> op.UseNpgsql(builder.Configurat
 
 // Injetando o repositório
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+// Adicionando o AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
