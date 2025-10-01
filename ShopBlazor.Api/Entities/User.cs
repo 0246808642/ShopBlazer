@@ -4,5 +4,6 @@
     {
         public long Id { get; set; }
         public string NameUser { get; set; }= string.Empty;
+        public Cart? Cart { get; set; } 
     }
 }
