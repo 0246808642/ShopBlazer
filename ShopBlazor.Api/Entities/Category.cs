@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShopBlazor.Api.Entities
 {
     public class Category
     {
         public long Id { get; set; }
+
+        [Required, MaxLength(100)]
         public string Name { get; set; }= string.Empty;
         public string IconCSS { get; set; }= string.Empty;
 
