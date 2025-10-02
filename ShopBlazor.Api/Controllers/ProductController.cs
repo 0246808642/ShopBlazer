@@ -59,16 +59,16 @@ namespace ShopBlazor.Api.Controllers
         }
 
         [HttpGet("Categorias/{id:long}")]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetCategories(long id)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetCategories(long id)
         {
             try
             {
-               var cat = await _repository.GetItensByCategory(id);
-                if (cat is null)
-                {
-                    NotFound($"Categoria com id={id} não encontrada");
-                }
-                var dto = _mapper.Map<IEnumerable<ProductDto>>(cat);
+                var products = await _repository.GetItensByCategory(id);
+
+                if (products is null || !products.Any())
+                    return NotFound($"Categoria com id={id} não encontrada ou sem produtos.");
+
+                var dto = _mapper.Map<IEnumerable<ProductDto>>(products);
                 return Ok(dto);
             }
             catch (Exception ex)
