@@ -68,8 +68,8 @@ namespace ShopBlazor.Api.Controllers
                 {
                     NotFound($"Categoria com id={id} não encontrada");
                 }
-                var dto = _mapper.Map<CategoryDto>(cat);
-                return Ok(cat);
+                var dto = _mapper.Map<IEnumerable<ProductDto>>(cat);
+                return Ok(dto);
             }
             catch (Exception ex)
             {
